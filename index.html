@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الدورة المحاسبية — رحلة تعليمية تفاعلية</title>
+  <meta name="description" content="تعلّم مراحل الدورة المحاسبية بطريقة تفاعلية وممتعة، من الفاتورة إلى القوائم المالية." />
+
+  <!-- Google Fonts: Cairo for Arabic readability -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="teacher.css" />
+  <!-- Fix: ensure [hidden] always wins over CSS display rules -->
+  <style>[hidden] { display: none !important; }</style>
+</head>
+
+<body>
+  <!-- ============================================================
+       PROGRESS BAR (persistent)
+  ============================================================ -->
+  <div class="progress-bar-wrapper" id="progressBarWrapper" aria-label="مؤشر التقدم" role="progressbar">
+    <!-- Teacher name badge - visible on all screens -->
+    <div class="teacher-badge-bar">
+      <span class="teacher-badge-icon"><i class="fa-solid fa-chalkboard-user"></i></span>
+      <span class="teacher-badge-name">إعداد الأستاذ أحمد الصالح</span>
+    </div>
+    <div class="progress-steps">
+      <div class="progress-step active" data-step="1" aria-label="الشاشة ١">
+        <span class="step-dot"></span>
+        <span class="step-label">المقدمة</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step" data-step="2" aria-label="الشاشة ٢">
+        <span class="step-dot"></span>
+        <span class="step-label">المراحل</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step" data-step="3" aria-label="الشاشة ٣">
+        <span class="step-dot"></span>
+        <span class="step-label">التطبيق</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step" data-step="4" aria-label="الشاشة ٤">
+        <span class="step-dot"></span>
+        <span class="step-label">التقويم</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step" data-step="5" aria-label="الشاشة ٥">
+        <span class="step-dot"></span>
+        <span class="step-label">الختام</span>
+      </div>
+    </div>
+    <div class="progress-fill-track">
+      <div class="progress-fill-bar" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       APP WRAPPER
+  ============================================================ -->
+  <main class="app-wrapper" id="appWrapper">
+
+    <!-- ============================================================
+         SCREEN 1 — WELCOME / INTRODUCTION
+    ============================================================ -->
+    <section class="screen screen-active" id="screen-1" aria-label="شاشة المقدمة">
+      <div class="screen-bg-pattern screen-1-bg"></div>
+
+      <div class="welcome-container">
+        <!-- Floating decorative icons -->
+        <div class="floating-icons" aria-hidden="true">
+          <div class="float-icon float-icon-1"><i class="fa-solid fa-file-invoice"></i></div>
+          <div class="float-icon float-icon-2"><i class="fa-solid fa-book-open"></i></div>
+          <div class="float-icon float-icon-3"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="float-icon float-icon-4"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div class="float-icon float-icon-5"><i class="fa-solid fa-coins"></i></div>
+          <div class="float-icon float-icon-6"><i class="fa-solid fa-calculator"></i></div>
+        </div>
+
+        <!-- Main hero content -->
+        <div class="hero-content">
+          <div class="hero-badge animate-in delay-1">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>درس تفاعلي</span>
+          </div>
+
+          <!-- Learning Objective -->
+          <div class="learning-objective animate-in delay-2">
+            <div class="objective-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="objective-text">
+              <strong>الهدف التعليمي:</strong>
+              أن يتعرف الطالب على مراحل الدورة المحاسبية على الترتيب بنسبة ٩٠٪
+            </div>
+          </div>
+
+          <h1 class="hero-title animate-in delay-3">
+            الدورة المحاسبية
+            <span class="title-accent">من الفاتورة إلى القوائم المالية</span>
+          </h1>
+
+          <p class="hero-subtitle animate-in delay-4">
+            مجموعة من المراحل المُتسلسِلة منذ حدوث العملية المالية حتّى استخراج النتائج، وفيها تُوثَّق العمليات المالية للمؤسسة وتُسجَّل وتُحلَّل
+          </p>
+
+          <!-- Feature cards row -->
+          <div class="intro-features animate-in delay-4">
+            <div class="intro-feature-card">
+              <div class="feature-icon-wrap"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+              <span>تسجيل العمليات</span>
+            </div>
+            <div class="intro-feature-card">
+              <div class="feature-icon-wrap"><i class="fa-solid fa-diagram-project"></i></div>
+              <span>٦ مراحل متسلسلة</span>
+            </div>
+            <div class="intro-feature-card">
+              <div class="feature-icon-wrap"><i class="fa-solid fa-table-columns"></i></div>
+              <span>قوائم مالية</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg animate-in delay-5" id="btn-start" aria-label="ابدأ رحلة التعلم">
+            <span>ابدأ الرحلة</span>
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+
+          <div class="journey-hint animate-in delay-6">
+            <i class="fa-solid fa-route"></i>
+            <span>٥ محطات تعليمية تفاعلية تنتظرك</span>
+          </div>
+        </div>
+
+        <!-- Right-side: Teacher Profile Card -->
+        <div class="hero-visual animate-in delay-3">
+          <div class="teacher-profile-card">
+            <div class="teacher-glow-ring"></div>
+            <div class="teacher-img-wrap">
+              <img src="teacher.png" alt="الأستاذ أحمد الصالح" class="teacher-img" />
+              <div class="teacher-speech-bubble">
+                <span>تمام يا قلبي؟ 😄</span>
+                <div class="speech-tail"></div>
+              </div>
+            </div>
+            <div class="teacher-info">
+              <div class="teacher-title-pill">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>المعلم</span>
+              </div>
+              <h3 class="teacher-name">أحمد الصالح</h3>
+              <p class="teacher-subject">محاسبة مالية • الدورة المحاسبية</p>
+
+            </div>
+            <div class="teacher-stat-row">
+              <div class="teacher-stat">
+                <i class="fa-solid fa-book"></i>
+                <span>٦ مراحل</span>
+              </div>
+              <div class="teacher-stat">
+                <i class="fa-solid fa-star"></i>
+                <span>تعلّم تفاعلي</span>
+              </div>
+              <div class="teacher-stat">
+                <i class="fa-solid fa-trophy"></i>
+                <span>تقويم شامل</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 2 — ACCOUNTING CYCLE STAGES
+    ============================================================ -->
+    <section class="screen" id="screen-2" aria-label="شاشة مراحل الدورة المحاسبية">
+      <div class="screen-bg-pattern screen-2-bg"></div>
+
+      <div class="screen-header">
+        <h2 class="screen-title">مراحل الدورة المحاسبية</h2>
+        <p class="screen-instruction">
+          <i class="fa-solid fa-hand-pointer"></i>
+          انقر على كل مرحلة لاستكشاف تفاصيلها
+        </p>
+      </div>
+
+      <!-- Audio Player -->
+      <div class="audio-player-bar" id="audioPlayerBar">
+        <button class="audio-play-btn" id="audioPlayBtn" aria-label="تشغيل الشرح الصوتي">
+          <span class="audio-play-ripple"></span>
+          <i class="fa-solid fa-play" id="audioPlayIcon"></i>
+        </button>
+        <div class="audio-player-body">
+          <div class="audio-player-top">
+            <i class="fa-solid fa-headphones-simple audio-label-icon"></i>
+            <span class="audio-label-text">استمع إلى شرح الدرس</span>
+            <span class="audio-wave" id="audioWave" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </span>
+          </div>
+          <div class="audio-player-timeline">
+            <span class="audio-time-current" id="audioCurrentTime">٠:٠٠</span>
+            <div class="audio-track" id="audioTrack">
+              <div class="audio-track-fill" id="audioTrackFill"></div>
+              <div class="audio-track-thumb" id="audioTrackThumb"></div>
+            </div>
+            <span class="audio-time-total" id="audioDuration">--:--</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stages-layout">
+        <!-- Circular Diagram -->
+        <div class="cycle-diagram-wrap">
+          <div class="cycle-diagram" id="cycleDiagram" aria-label="مخطط الدورة المحاسبية">
+            <!-- Center label -->
+            <div class="cycle-center" aria-hidden="true">
+              <i class="fa-solid fa-rotate"></i>
+              <span>الدورة<br/>المحاسبية</span>
+            </div>
+
+            <!-- Stage nodes — positioned via CSS custom properties -->
+            <button class="cycle-node" data-stage="1" data-angle="0" aria-label="المرحلة الأولى: تحديد وتحليل العمليات">
+              <span class="node-num">١</span>
+              <span class="node-label">تحديد وتحليل<br/>العمليات</span>
+            </button>
+
+            <button class="cycle-node" data-stage="2" data-angle="60" aria-label="المرحلة الثانية: التسجيل في دفتر اليومية">
+              <span class="node-num">٢</span>
+              <span class="node-label">التسجيل في<br/>دفتر اليومية</span>
+            </button>
+
+            <button class="cycle-node" data-stage="3" data-angle="120" aria-label="المرحلة الثالثة: الترحيل إلى دفتر الأستاذ">
+              <span class="node-num">٣</span>
+              <span class="node-label">الترحيل إلى<br/>دفتر الأستاذ</span>
+            </button>
+
+            <button class="cycle-node" data-stage="4" data-angle="180" aria-label="المرحلة الرابعة: إعداد ميزان المراجعة">
+              <span class="node-num">٤</span>
+              <span class="node-label">إعداد ميزان<br/>المراجعة</span>
+            </button>
+
+            <button class="cycle-node" data-stage="5" data-angle="240" aria-label="المرحلة الخامسة: إعداد القوائم المالية">
+              <span class="node-num">٥</span>
+              <span class="node-label">إعداد القوائم<br/>المالية</span>
+            </button>
+
+            <button class="cycle-node" data-stage="6" data-angle="300" aria-label="المرحلة السادسة: إقفال الحسابات">
+              <span class="node-num">٦</span>
+              <span class="node-label">إقفال<br/>الحسابات</span>
+            </button>
+
+            <!-- Connecting arrows (decorative) -->
+            <svg class="cycle-arrows" viewBox="0 0 400 400" aria-hidden="true">
+              <defs>
+                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="rgba(20,184,166,0.4)" />
+                </marker>
+              </defs>
+              <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(20,184,166,0.15)" stroke-width="2" stroke-dasharray="8 6" />
+            </svg>
+          </div>
+
+          <!-- Stage counter hint -->
+          <div class="stages-visited-hint" id="stagesVisitedHint" aria-live="polite">
+            <span id="visitedCount">٠</span>/٦ مراحل تم اكتشافها
+          </div>
+        </div>
+
+        <!-- Info Panel -->
+        <aside class="stage-info-panel" id="stageInfoPanel" aria-live="polite" aria-label="تفاصيل المرحلة">
+          <div class="info-panel-placeholder" id="infoPanelPlaceholder">
+            <div class="placeholder-icon"><i class="fa-solid fa-hand-pointer"></i></div>
+            <p>اختر مرحلة من المخطط<br/>لعرض تفاصيلها</p>
+          </div>
+
+          <div class="info-panel-content" id="infoPanelContent" hidden>
+            <div class="info-stage-num" id="infoStageNum"></div>
+            <div class="info-stage-icon" id="infoStageIcon" aria-hidden="true"></div>
+            <h3 class="info-stage-title" id="infoStageTitle"></h3>
+            <p class="info-stage-desc" id="infoStageDesc"></p>
+            <div class="info-stage-detail" id="infoStageDetail"></div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Importance mini-panel -->
+      <div class="importance-section">
+        <button class="importance-toggle" id="importanceToggle" aria-expanded="false" aria-controls="importanceBody">
+          <i class="fa-solid fa-lightbulb"></i>
+          <span>لماذا تُعَدُّ الدورة المحاسبية مهمة؟</span>
+          <i class="fa-solid fa-chevron-left toggle-arrow"></i>
+        </button>
+        <div class="importance-body" id="importanceBody" hidden>
+          <div class="importance-grid">
+            <div class="imp-item">
+              <i class="fa-solid fa-bullseye"></i>
+              <div>
+                <strong>الدقة في التسجيل</strong>
+                <span>تضمن تسجيل العمليات المالية بصورة صحيحة وإعداد تقارير موثوقة</span>
+              </div>
+            </div>
+            <div class="imp-item">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+              <div>
+                <strong>تحليل الأداء المالي</strong>
+                <span>تتبّع جميع العمليات وتحليلها لاتخاذ قرارات استراتيجية دقيقة</span>
+              </div>
+            </div>
+            <div class="imp-item">
+              <i class="fa-solid fa-gavel"></i>
+              <div>
+                <strong>الامتثال القانوني والضريبي</strong>
+                <span>تقديم تقارير تتوافق مع القوانين المحلية والدولية</span>
+              </div>
+            </div>
+            <div class="imp-item">
+              <i class="fa-solid fa-brain"></i>
+              <div>
+                <strong>دعم اتخاذ القرار</strong>
+                <span>توفير بيانات مالية دقيقة وحديثة للإدارة</span>
+              </div>
+            </div>
+            <div class="imp-item">
+              <i class="fa-solid fa-user-check"></i>
+              <div>
+                <strong>تسهيل المراجعة والتدقيق</strong>
+                <span>تنظيم المعاملات بصورة تُسهّل على المدققين عملهم</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen-nav">
+        <button class="btn btn-primary" id="btn-to-screen3">
+          <span>انتقل إلى التطبيق العملي</span>
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 3 — PRACTICAL SIMULATION "BE AN ACCOUNTANT"
+    ============================================================ -->
+    <section class="screen" id="screen-3" aria-label="شاشة التطبيق العملي">
+      <div class="screen-bg-pattern screen-3-bg"></div>
+
+      <div class="screen-header">
+        <h2 class="screen-title">
+          <i class="fa-solid fa-user-tie"></i>
+          كن محاسباً
+        </h2>
+        <p class="screen-instruction">طبّق مبدأ القيد المزدوج على عملية مالية حقيقية</p>
+      </div>
+
+      <div class="simulation-layout">
+        <!-- Main simulation area -->
+        <div class="simulation-main">
+          <!-- Scenario card -->
+          <div class="scenario-card">
+            <div class="scenario-badge">
+              <i class="fa-solid fa-file-invoice"></i>
+              <span>العملية المالية</span>
+            </div>
+            <p class="scenario-text">اشترت الشركة <strong>معدات</strong> بقيمة <strong>5,000 دينار</strong> نقداً من الصندوق</p>
+            <div class="scenario-analysis-prompt">
+              <i class="fa-solid fa-question-circle"></i>
+              حلّل هذه العملية: ما الحساب المدين وما الحساب الدائن؟
+            </div>
+          </div>
+
+          <!-- Draggable items -->
+          <div class="drag-items-area" id="dragItemsArea">
+            <p class="drag-instruction"><i class="fa-solid fa-hand-pointer"></i> اسحب كل عنصر إلى الخانة المناسبة</p>
+            <div class="drag-items-row">
+              <div class="drag-item" id="drag-equipment" draggable="true" data-item="equipment" data-name="معدات" tabindex="0" aria-label="اسحب المعدات إلى الخانة المناسبة" role="button">
+                <i class="fa-solid fa-tools"></i>
+                <span>معدات</span>
+                <div class="drag-item-sub">أصل ثابت</div>
+              </div>
+              <div class="drag-item" id="drag-cash" draggable="true" data-item="cash" data-name="الصندوق" tabindex="0" aria-label="اسحب الصندوق إلى الخانة المناسبة" role="button">
+                <i class="fa-solid fa-cash-register"></i>
+                <span>الصندوق</span>
+                <div class="drag-item-sub">أصل متداول</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drop zones -->
+          <div class="drop-zones-row">
+            <div class="drop-zone debit-zone" id="drop-debit" data-zone="debit" aria-label="خانة المدين" aria-dropeffect="move">
+              <div class="zone-header debit-header">
+                <i class="fa-solid fa-arrow-down-to-line"></i>
+                <span>مدين</span>
+                <span class="zone-badge debit-badge">من حـ /</span>
+              </div>
+              <div class="zone-body" id="debit-zone-body">
+                <div class="zone-placeholder">
+                  <i class="fa-solid fa-plus-circle"></i>
+                  <span>أفلت هنا</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="drop-zone credit-zone" id="drop-credit" data-zone="credit" aria-label="خانة الدائن" aria-dropeffect="move">
+              <div class="zone-header credit-header">
+                <i class="fa-solid fa-arrow-up-from-line"></i>
+                <span>دائن</span>
+                <span class="zone-badge credit-badge">إلى حـ /</span>
+              </div>
+              <div class="zone-body" id="credit-zone-body">
+                <div class="zone-placeholder">
+                  <i class="fa-solid fa-plus-circle"></i>
+                  <span>أفلت هنا</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="sim-actions">
+            <button class="btn btn-secondary" id="btn-hint" aria-label="عرض تلميح" aria-expanded="false">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>عرض التلميح</span>
+            </button>
+            <button class="btn btn-outline" id="btn-reset-sim" aria-label="إعادة تعيين التمرين">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>إعادة تعيين</span>
+            </button>
+            <button class="btn btn-primary" id="btn-check-sim" aria-label="تحقق من الإجابة">
+              <i class="fa-solid fa-check"></i>
+              <span>تحقق من الإجابة</span>
+            </button>
+          </div>
+
+          <!-- Hint box (hidden by default) -->
+          <div class="hint-box" id="hintBox" hidden>
+            <i class="fa-solid fa-lightbulb"></i>
+            <div>
+              <strong>تلميح:</strong>
+              <p>فكّر: هل زادت المعدات أم نقصت؟ وهل الصندوق زاد أم نقص؟<br/>
+              تذكّر: <em>الأصل إذا زاد يبقى مدين، وإذا نقص يصبح دائن</em></p>
+            </div>
+          </div>
+
+          <!-- Feedback area -->
+          <div class="sim-feedback" id="simFeedback" hidden aria-live="polite">
+            <!-- Filled by JS -->
+          </div>
+
+          <!-- Next screen button (shown after success) -->
+          <div class="sim-next-wrap" id="simNextWrap" hidden>
+            <button class="btn btn-primary btn-lg" id="btn-to-screen4">
+              <span>ابدأ التقويم</span>
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Side reference panel -->
+        <aside class="theory-panel" aria-label="مرجع القيد المزدوج">
+          <div class="theory-header">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>مرجع القيد المزدوج</span>
+          </div>
+
+          <div class="theory-section">
+            <div class="theory-item debit-item">
+              <div class="theory-badge debit">مدين</div>
+              <p>زيادة في <strong>الأصول</strong> أو <strong>المصروفات</strong></p>
+              <code>من حـ / ...</code>
+            </div>
+            <div class="theory-item credit-item">
+              <div class="theory-badge credit">دائن</div>
+              <p>زيادة في <strong>الالتزامات</strong> أو <strong>الإيرادات</strong></p>
+              <code>إلى حـ / ...</code>
+            </div>
+          </div>
+
+          <div class="theory-table-wrap">
+            <p class="table-title">طبيعة الحسابات</p>
+            <table class="theory-table" aria-label="جدول طبيعة الحسابات">
+              <thead>
+                <tr>
+                  <th>الحساب</th>
+                  <th>طبيعته</th>
+                  <th>زيادة (+)</th>
+                  <th>نقص (−)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>الأصول</td>
+                  <td><span class="badge-debit">مدين</span></td>
+                  <td>مدين</td>
+                  <td>دائن</td>
+                </tr>
+                <tr>
+                  <td>الالتزامات</td>
+                  <td><span class="badge-credit">دائن</span></td>
+                  <td>دائن</td>
+                  <td>مدين</td>
+                </tr>
+                <tr>
+                  <td>حقوق الملكية</td>
+                  <td><span class="badge-credit">دائن</span></td>
+                  <td>دائن</td>
+                  <td>مدين</td>
+                </tr>
+                <tr>
+                  <td>الإيرادات</td>
+                  <td><span class="badge-credit">دائن</span></td>
+                  <td>دائن</td>
+                  <td>مدين</td>
+                </tr>
+                <tr>
+                  <td>المصروفات</td>
+                  <td><span class="badge-debit">مدين</span></td>
+                  <td>مدين</td>
+                  <td>دائن</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="theory-principle">
+            <i class="fa-solid fa-quote-right"></i>
+            <p>أي حساب له طبيعة... إذا زاد يبقى على طبيعته، وإذا نقص يعكس طبيعته</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 4 — FINAL ASSESSMENT
+    ============================================================ -->
+    <section class="screen" id="screen-4" aria-label="شاشة التقويم النهائي">
+      <div class="screen-bg-pattern screen-4-bg"></div>
+
+      <div class="screen-header">
+        <h2 class="screen-title">التقويم النهائي</h2>
+        <p class="screen-instruction">اختبر فهمك للدرس</p>
+      </div>
+
+      <div class="assessment-layout">
+        <div class="assessment-card">
+          <div class="assessment-icon" aria-hidden="true">
+            <i class="fa-solid fa-circle-question"></i>
+          </div>
+
+          <h3 class="assessment-question">سؤال سريع: ما هو المخرج النهائي للنظام المحاسبي؟</h3>
+
+          <div class="assessment-options" id="assessmentOptions" role="radiogroup" aria-label="خيارات الإجابة">
+            <label class="option-card" id="opt-1">
+              <input type="radio" name="assessment" value="journal" class="sr-only" aria-label="دفتر اليومية" />
+              <div class="option-icon"><i class="fa-solid fa-book"></i></div>
+              <span class="option-label">دفتر اليومية</span>
+              <div class="option-check" aria-hidden="true"><i class="fa-solid fa-circle"></i></div>
+            </label>
+
+            <label class="option-card" id="opt-2">
+              <input type="radio" name="assessment" value="statements" class="sr-only" aria-label="القوائم المالية" />
+              <div class="option-icon"><i class="fa-solid fa-file-chart-column"></i></div>
+              <span class="option-label">القوائم المالية</span>
+              <div class="option-check" aria-hidden="true"><i class="fa-solid fa-circle"></i></div>
+            </label>
+
+            <label class="option-card" id="opt-3">
+              <input type="radio" name="assessment" value="closing" class="sr-only" aria-label="إقفال الحسابات" />
+              <div class="option-icon"><i class="fa-solid fa-lock"></i></div>
+              <span class="option-label">إقفال الحسابات</span>
+              <div class="option-check" aria-hidden="true"><i class="fa-solid fa-circle"></i></div>
+            </label>
+          </div>
+
+          <button class="btn btn-primary btn-lg" id="btn-check-assessment" aria-label="تأكيد الإجابة">
+            <i class="fa-solid fa-check"></i>
+            <span>تأكيد الإجابة</span>
+          </button>
+
+          <!-- Result feedback -->
+          <div class="assessment-feedback" id="assessmentFeedback" hidden aria-live="polite">
+            <!-- Filled by JS -->
+          </div>
+
+          <!-- Proceed button (shown after answering) -->
+          <div class="assessment-next-wrap" id="assessmentNextWrap" hidden>
+            <button class="btn btn-primary" id="btn-to-screen5">
+              <span>انظر ملخص الدرس</span>
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Context reminder -->
+        <div class="assessment-context">
+          <div class="context-card">
+            <i class="fa-solid fa-circle-info"></i>
+            <h4>تذكّر</h4>
+            <p>القوائم المالية هي المنتج النهائي للنظام المحاسبي، وتشمل:</p>
+            <ul>
+              <li>قائمة الدخل</li>
+              <li>قائمة حقوق الملكية</li>
+              <li>قائمة المركز المالي (الميزانية العمومية)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 5 — ENDING / SUMMARY
+    ============================================================ -->
+    <section class="screen" id="screen-5" aria-label="شاشة الختام">
+      <div class="screen-bg-pattern screen-5-bg"></div>
+
+      <div class="summary-container">
+        <!-- Celebration icon -->
+        <div class="summary-celebrate" aria-hidden="true">
+          <div class="celebrate-ring"></div>
+          <div class="celebrate-icon">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+        </div>
+
+        <h2 class="summary-title">أحسنت! 🎉</h2>
+
+        <!-- Result badge -->
+        <div class="result-badge" id="resultBadge">
+          <i class="fa-solid fa-star"></i>
+          <span>محاسب مُتميّز</span>
+        </div>
+
+        <p class="summary-text">
+          لقد تعرّفت على مفهوم الدورة المحاسبية، واستكشفت مراحلها، وطبّقت مبدأ القيد المزدوج، وأجبت عن سؤال التقويم النهائي.
+        </p>
+
+        <!-- What you learned -->
+        <div class="learned-section">
+          <h3 class="learned-title">ما تعلّمته في هذا الدرس:</h3>
+          <div class="learned-grid">
+            <div class="learned-item">
+              <div class="learned-icon"><i class="fa-solid fa-rotate"></i></div>
+              <div>
+                <strong>مفهوم الدورة المحاسبية</strong>
+                <span>مراحل متسلسلة من العملية المالية إلى النتائج</span>
+              </div>
+            </div>
+            <div class="learned-item">
+              <div class="learned-icon"><i class="fa-solid fa-list-ol"></i></div>
+              <div>
+                <strong>مراحل الدورة المحاسبية</strong>
+                <span>٦ مراحل من التحديد وحتى الإقفال</span>
+              </div>
+            </div>
+            <div class="learned-item">
+              <div class="learned-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+              <div>
+                <strong>مبدأ المدين والدائن</strong>
+                <span>القيد المزدوج وطبيعة الحسابات المالية</span>
+              </div>
+            </div>
+            <div class="learned-item">
+              <div class="learned-icon"><i class="fa-solid fa-file-chart-column"></i></div>
+              <div>
+                <strong>القوائم المالية كمخرج نهائي</strong>
+                <span>المُلخَّص النهائي للنظام المحاسبي</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="summary-actions">
+          <button class="btn btn-primary btn-lg" id="btn-restart">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>إعادة الدرس</span>
+          </button>
+          <button class="btn btn-outline btn-lg" id="btn-exit">
+            <i class="fa-solid fa-door-open"></i>
+            <span>خروج</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Exit overlay -->
+  <div class="exit-overlay" id="exitOverlay" hidden role="dialog" aria-modal="true" aria-label="شاشة الوداع">
+    <div class="exit-card">
+      <i class="fa-solid fa-hand-wave exit-wave" aria-hidden="true"></i>
+      <h2>شكراً لك!</h2>
+      <p>نتمنى أن يكون الدرس قد أفادك.<br/>إلى اللقاء في رحلة تعليمية أخرى.</p>
+      <button class="btn btn-primary" id="btn-exit-close">
+        <i class="fa-solid fa-rotate-right"></i>
+        <span>العودة للدرس</span>
+      </button>
+    </div>
+  </div>
+
+  <audio id="screen2-audio" src="New Recording 10.m4a" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

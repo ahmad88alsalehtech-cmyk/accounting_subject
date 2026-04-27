@@ -1,0 +1,289 @@
+/* ============================================================
+   TEACHER STYLES — teacher.css
+   Loaded after style.css
+============================================================ */
+
+/* ---------- Progress bar badge (all screens) ---------- */
+.teacher-badge-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  justify-content: flex-end;
+}
+
+.teacher-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(20,184,166,0.3), rgba(245,158,11,0.3));
+  color: #5eead4;
+  font-size: 0.7rem;
+  border: 1.5px solid rgba(20,184,166,0.4);
+}
+
+.teacher-badge-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Teacher profile card (Screen 1 hero) ---------- */
+.teacher-profile-card {
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 28px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(20,184,166,0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  width: 100%;
+}
+
+.teacher-profile-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(20,184,166,0.3);
+}
+
+.teacher-glow-ring {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,184,166,0.22) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Circular icon avatar frame */
+.teacher-img-wrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, rgba(20,184,166,0.85), rgba(245,158,11,0.6));
+  box-shadow: 0 8px 30px rgba(20,184,166,0.4), 0 0 0 4px rgba(20,184,166,0.12);
+  z-index: 1;
+  overflow: visible;
+  animation: teacherFloat 4s ease-in-out infinite;
+}
+
+@keyframes teacherFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+
+.teacher-icon-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f1f3d, #162d5a);
+  border: 3px solid rgba(20,184,166,0.25);
+  color: #14b8a6;
+  font-size: 3.2rem;
+}
+
+/* Fallback: if user adds their own image later */
+.teacher-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #0f1f3d;
+}
+
+/* Info section */
+.teacher-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+  width: 100%;
+}
+
+.teacher-title-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(20,184,166,0.15);
+  border: 1px solid rgba(20,184,166,0.35);
+  color: #5eead4;
+  padding: 3px 14px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.teacher-name {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.teacher-subject {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+}
+
+/* Speech cloud — floating at top-right of teacher image */
+.teacher-speech-bubble {
+  position: absolute;
+  top: -20px;
+  right: -60px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 10px 16px;
+  white-space: nowrap;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+  animation: bubblePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s both;
+  z-index: 10;
+}
+
+.teacher-speech-bubble span {
+  font-size: 0.88rem;
+  color: #1a1a2e;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* Cloud tail — two small circles */
+.speech-tail {
+  position: absolute;
+  bottom: -8px;
+  left: 22px;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.speech-tail::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@keyframes bubblePop {
+  0%   { opacity: 0; transform: scale(0) translateY(15px); }
+  60%  { opacity: 1; transform: scale(1.1) translateY(-3px); }
+  80%  { transform: scale(0.95) translateY(1px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Stats row */
+.teacher-stat-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 14px;
+  z-index: 1;
+}
+
+.teacher-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 600;
+}
+
+.teacher-stat i {
+  font-size: 1rem;
+  color: #14b8a6;
+}
+
+/* ---------- Learning Objective (Screen 1) ---------- */
+.learning-objective {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(20,184,166,0.08);
+  border: 1px solid rgba(20,184,166,0.2);
+  border-right: 4px solid #14b8a6;
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-top: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.objective-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(20,184,166,0.15);
+  color: #14b8a6;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.objective-text {
+  font-size: 0.88rem;
+  color: #ffffff;
+  line-height: 1.7;
+  text-align: right;
+}
+
+.objective-text strong {
+  color: #5eead4;
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.78rem;
+  letter-spacing: 0.3px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-visual {
+    display: block !important;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .teacher-img-wrap { width: 110px; height: 110px; }
+  .teacher-icon-avatar { font-size: 2.6rem; }
+}
+
+@media (max-width: 600px) {
+  .teacher-badge-name { font-size: 0.62rem; }
+  .teacher-img-wrap { width: 90px; height: 90px; }
+  .teacher-icon-avatar { font-size: 2.2rem; }
+  .teacher-name { font-size: 1.2rem; }
+  .teacher-fun-quote span { font-size: 0.72rem; }
+}
